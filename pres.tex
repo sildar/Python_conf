@@ -1,0 +1,148 @@
+\documentclass{beamer}
+
+\usetheme{Warsaw}
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{./img/}}
+\DeclareGraphicsExtensions{.png, .jpeg, .jpg}
+
+
+\renewcommand*\thesection{\arabic{section}}
+
+
+\AtBeginSection[]{%
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=hide/show/hide]
+  \end{frame}
+  \addtocounter{framenumber}{-1}
+}
+
+
+
+\title{Python : Une Introduction}
+\institute{ASCII}
+\author{Rémi Bois}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section{Introduction}
+\label{sec:intro}
+
+\begin{frame}
+  \frametitle{Python, Kézako ?}
+% langage de programmation
+% date d'apparition
+% parenté avec les Monthy Pythons
+\end{frame}
+
+\begin{frame}
+  \frametitle{Encore un langage de niche ?}
+% Grands projets (voir django, ...)
+% Place dans l'open source
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sa particularité ?}
+% Lisibilité (quote Guido)
+% Open
+% Très bon dans certains domaines (nltk, numPy, ...)
+% Adossé au C (ahah)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sa version ...?}
+% Python 2 vs Python 3
+% problème des modules non portés
+% problèmes sémantiques (/, print, ...)
+\end{frame}
+
+\section{Syntaxe}
+\label{sec:syntax}
+
+\begin{frame}
+  \frametitle{L'avènement des tabulations}
+% Objectif (lisibilité)
+% Un exemple Java/C++ -> Python
+\end{frame}
+
+\begin{frame}
+  \frametitle{Le typage en Python}
+% Non verbosité
+% nommage des variables plutôt que typage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Les conditions}
+% If, While, For
+% The Pythonic Way of doing it (lists)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Les fonctions}
+% Définition, appel
+% Paramètres supplémentaires
+\end{frame}
+
+\section{Les listes et les paires}
+\label{sec:lists}
+
+\begin{frame}
+  \frametitle{Les tuples présents, comme dans tout bon langage}
+% taunt Java
+% définition, accès, swap de variables...
+\end{frame}
+
+\begin{frame}
+  \frametitle{Les listes comme on les connaît}
+% définition, parcourt, fonctions principales
+\end{frame}
+
+\begin{frame}
+  \frametitle{List comprehension}
+% exemple simple avec zip (en lien avec les tuples)
+\end{frame}
+
+\begin{frame}
+  \frametitle{List comprehension avancée}
+% nested lists, fontion sur les éléments
+\end{frame}
+
+\section{Une approche fonctionnelle}
+\label{sec:functionnal}
+
+\begin{frame}
+  \frametitle{Les maps, reduce, filter}
+% fonctions avec exemple
+\end{frame}
+
+\begin{frame}
+  \frametitle{Les lambda expressions}
+% exemple
+\end{frame}
+
+\section{Exceptions \& co}
+\label{sec:except}
+
+\begin{frame}
+  \frametitle{Les exceptions}
+% Better ask for forgiveness than for permission
+% exemple
+\end{frame}
+
+\begin{frame}
+  \frametitle{Breaks \& Continues}
+% exemple
+\end{frame}
+
+\end{document}
