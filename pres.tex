@@ -9,8 +9,15 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{sidecap}
+\usepackage{caption}
 \graphicspath{{./img/}}
 \DeclareGraphicsExtensions{.png, .jpeg, .jpg}
+
+
+\usepackage{listings}
+\usepackage{setspace} 
+\usepackage{url}
 
 
 \renewcommand*\thesection{\arabic{section}}
@@ -23,6 +30,58 @@
   \end{frame}
   \addtocounter{framenumber}{-1}
 }
+
+% Custom colors
+\usepackage{color}
+
+
+\definecolor{Code}{rgb}{0,0,0}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}
+\definecolor{Numbers}{rgb}{0.5,0,0}
+\definecolor{MatchingBrackets}{rgb}{0.25,0.5,0.5}
+\definecolor{Keywords}{rgb}{0,0,1}
+\definecolor{self}{rgb}{0,0,0}
+\definecolor{Strings}{rgb}{0,0.63,0}
+\definecolor{Comments}{rgb}{0,0.63,1}
+\definecolor{Backquotes}{rgb}{0,0,0}
+\definecolor{Classname}{rgb}{0,0,0}
+\definecolor{FunctionName}{rgb}{0,0,0}
+\definecolor{Operators}{rgb}{0,0,0}
+\definecolor{Background}{rgb}{0.98,0.98,0.98}
+
+\lstnewenvironment{python}[1][]{
+\lstset{
+numbers=left,
+numberstyle=\footnotesize,
+numbersep=1em,
+xleftmargin=1em,
+framextopmargin=2em,
+framexbottommargin=2em,
+showspaces=false,
+showtabs=false,
+showstringspaces=false,
+frame=l,
+tabsize=4,
+% Basic
+basicstyle=\ttfamily\small\setstretch{1},
+backgroundcolor=\color{Background},
+language=Python,
+% Comments
+commentstyle=\color{Comments}\slshape,
+% Strings
+stringstyle=\color{Strings},
+morecomment=[s][\color{Strings}]{"""}{"""},
+morecomment=[s][\color{Strings}]{'''}{'''},
+% keywords
+morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+keywordstyle={\color{Keywords}\bfseries},
+% additional keywords
+morekeywords={[2]@invariant},
+keywordstyle={[2]\color{Decorators}\slshape},
+emph={self},
+emphstyle={\color{self}\slshape},
+%
+}}{}
 
 
 
@@ -43,11 +102,55 @@
 
 \begin{frame}
   \frametitle{Objectifs de la présentation}
+
+  \begin{block}{A faire}
+    \begin{itemize}
+    \item Présenter le language
+    \item Présenter un environnement de travail pour le language
+      (virtualenv, emacs for python, pip, ...)
+    \item Donner des pointeurs vers des ressources pour aller plus loin
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{On va éviter}
+    \begin{itemize}
+    \item Affirmer que c'est mieux que
+      [insérez-votre-language-préféré]
+
+    \item Être trop technique
+    \item Être trop simple
+    \end{itemize}
+  \end{block}
+  
 % Do-s & Don't-s
 \end{frame}
 
 \begin{frame}
   \frametitle{Python, Kézako ?}
+
+  
+  \begin{block}{Caractéristiques du language}
+    \begin{itemize}
+    \item Python est un language de script datant de 1989. Successeur du
+      language ABC, lui même inspiré de ... SETL (!)
+    \item Python 2 en 2000, Python 3 en 2008
+    \item Il est interprété (et pas compilé).
+    \item Il propose une programmation : impérative, fonctionnelle,
+      object, procédurale.
+    \item High level :  "A programming language is low level when its
+      programs require attention to the irrelevant." Alan J. Perlis,
+      Premier Prix Turing.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Son origine}
+    \begin{itemize}
+    \item Nommé après les Monty Python
+    \item Parenté avec Perl ``Many ways to do it'' $\rightarrow$ ``One
+      obvious way to do it''
+    \end{itemize}
+  \end{block}
+  
 % langage de programmation/script
 % date d'apparition
 % parenté avec les Monthy Python
@@ -55,35 +158,151 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Encore un langage de niche ?}
-% Grands projets (voir django, ...)
-% Place dans l'open source
-% c'est bien ... http://xkcd.com/353/
-% high level :  "A programming language is low level when its programs
-% require attention to the irrelevant." — Alan J. Perlis, Premier Prix
-% Turing. 
+  \frametitle{Un guide}
+
+  \begin{block}{BDFL}
+    Il bénéficie d'un BDFL (Benevolent Dictator for Life) : Guido van
+    Rossum.  
+  \end{block}
+  
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=0.3\textwidth]{guido}
+    \caption{Guido van Rossum, BDFL}
+    \label{fig:guido}
+  \end{figure}
+
+% Guido
+
 \end{frame}
 
 \begin{frame}
+  \frametitle{Popularité}
+
+  \begin{block}{Un language fait pour l'open source}
+    \begin{itemize}
+    \item Multi-plateforme
+    \item Interprété (le code est donc distribué tel quel)
+    \item Très présent sur Github
+    \end{itemize}
+    
+  \end{block}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=0.33\textwidth]{trendingpython}
+    \caption{Un langage qui monte qui monte...}
+    \caption*{\tiny{Source : redmonk : \url{http://redmonk.com/sogrady/2014/01/22/language-rankings-1-14/}}}
+    \label{fig:trendingpython}
+  \end{figure}
+
+% Place dans l'open source
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Des gros projets}
+
+  \begin{block}{Quelques exemples}
+    \begin{itemize}
+    \item Django, un framework web en python
+    \item Dropbox, pour partager ses fichiers
+    \item Civilization IV
+    \item Répandu chez Google, la NASA, EDF, ...
+    \end{itemize}
+
+  \end{block}
+    
+% Grands projets (voir django, ...)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Une bonne réputation}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=0.6\textwidth]{xkcd}
+    \caption{xkcd 353}
+    \label{fig:xkcd}
+  \end{figure}
+  \centering
+  \tiny{Source : xkcd : \url{http://xkcd.com/353/}}
+
+% c'est bien ... http://xkcd.com/353/
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Sa particularité ?}
-% Lisibilité (quote Guido)
-% Open
+  
+  \begin{block}{Import this}
+    \begin{itemize}
+    \item Des guidelines claires, documentées (PEP 8)
+    \item Une philosophie
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Un langage pour spécialistes}
+    \begin{itemize}
+    \item NLTK
+    \item NumPy
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Adossé au C}
+    \begin{itemize}
+    \item et donc rapide (contrairement à une idée répandue)
+    \end{itemize}
+  \end{block}
+
+% Lisibilité (quote import this)
 % Très bon dans certains domaines (nltk, numPy, ...)
 % Adossé au C (ahah)
 \end{frame}
 
 \begin{frame}
-  \frametitle{Sa version ...?}
+  \frametitle{Une version 3 pas encore tout à fait adoptée ?}
+
+  \begin{block}{Py2 vs Py3}
+    \begin{itemize}
+    \item Des modules pas tous passés à Python 3
+    \item Un portage non trivial (malgré quelques scripts comme py2to3)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Python 3 est le futur}
+    \begin{itemize}
+    \item Python 3 résoud beaucoup de problèmes sémantiques / stylistiques.
+    \item La plupart des modules prévoient un portage Python 3.
+    \item Le développement de Python 2 est arrêté (Python 2.7 est la
+      dernière version).
+    \end{itemize}
+  \end{block}
 % Python 2 vs Python 3
 % problème des modules non portés
 % améliorations (/, print, ...)
 \end{frame}
 
-\section{Syntaxe}
-\label{sec:syntax}
+\section{Le Langage}
+\label{sec:language}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{L'avènement des tabulations}
+
+  \begin{block}{Donald Knuth l'avait prédit}
+    \begin{quote}
+      We will perhaps eventually be writing only small modules which are
+      identified by name as they are used to build larger ones, so that
+      devices like indentation, rather than delimiters, might become
+      feasible for expressing local structure in the source language.   
+    \end{quote}
+    \centering
+    \tiny
+    — Donald E. Knuth, in "Structured Programming with goto
+    Statements" Dec. 1974
+  \end{block}
+
+
 % Objectif (lisibilité)
  % We will perhaps eventually be writing only small modules which are
  % identified by name as they are used to build larger ones, so that
@@ -94,85 +313,621 @@
 % Un exemple Java/C++ -> Python
 \end{frame}
 
-\begin{frame}
-  \frametitle{Le typage en Python}
+
+
+\begin{frame}[fragile]
+  \frametitle{Le classique Hello World}
+
+    \begin{block}{Python}
+    \begin{python}
+  print("Hello World")
+    \end{python}
+
+    \end{block}
+
+    \begin{block}{VS Java...}
+    \begin{lstlisting}[language=Java]
+  public class HelloWorld {
+    public static void main(String[] args){
+      System.out.println("Hello, World");
+    }
+  }
+    \end{lstlisting}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Hello World, version longue}
+
+  \begin{block}{Python}
+    \begin{python}
+  def main():
+    print("Hello World")
+
+  if __name__ == "__main__":
+    main()
+    \end{python}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Le nommage en Python}
+
+
+  \begin{block}{Les variables}
+    \begin{python}
+  a = 5 # pas de typage
+  b = 3.0
+  a = [] # reassigne une valeur a un nom
+  b = "toto" # chaine de caractere
+  a = 't' # caractere
+  b = a # b = 't'
+    \end{python}
+  \end{block}
+
 % Non verbosité
 % nommage des variables plutôt que typage
 % exemples
 \end{frame}
 
-\begin{frame}
-  \frametitle{Les conditions}
-% If, While, For
-% The Pythonic Way of doing it (lists)
-\end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Les fonctions}
-% Définition, appel
-% Paramètres supplémentaires
-% Fonction dans une variable (nommage)
+
+  \begin{block}{En C++}
+    \begin{python}
+void* foo(std::vector<int>* first,
+           bar& second, baz&& other)
+  {
+   double length = other.length;
+   return (*other)->length;
+ }
+    \end{python}
+  \end{block}
+
+
+  \begin{block}{En python}
+
+    \begin{python}
+def nomDeFonction(foo, bar, optionnel=None):
+    # tambouille
+    return result
+
+toto = nomDeFonction("a" , 5)
+    \end{python}
+  \end{block}
+
 \end{frame}
 
-\section{Les listes et les paires}
-\label{sec:lists}
+\begin{frame}[fragile]
+  \frametitle{Les conditions et les boucles}
 
-\begin{frame}
+  \begin{block}{Les Ifs}
+    \begin{python}
+if cond1 and cond2:
+  print("We made it !")
+elif cond1:
+  print("Only cond1 !")
+else:
+  print("None is True !")
+    \end{python}
+  \end{block}
+
+  \begin{block}{While, la boucle la plus rare}
+    \begin{python}
+i = 0
+while i < 10:
+  i += 1
+  print(i)
+    \end{python}
+  \end{block}
+
+% If, While, For
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{For, le while done right}
+
+  \begin{block}{Un for classique}
+    \begin{python}
+for i in range(5):
+  print(i) # 0, 1, 2, 3, 4
+    \end{python}
+  \end{block}
+
+
+  \begin{block}{Itérer avec un for}
+    \begin{python}
+for item in maliste:
+  print(item)
+    \end{python}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{Les tuples présents, comme dans tout bon langage}
+
+  \centering
+
+  Toujours pas présents en Java...
+
+  \begin{block}{Paires, triplets, ...}
+    \begin{python}
+paire = (17, "Mars")
+triplet = ('a', "sc", "ii")
+print(triplet[0] + triplet[1] + triplet[2])
+# ascii
+    \end{python}
+  \end{block}
+
+  \begin{block}{Swap, unpacking}
+    \begin{python}
+a, b = ("at", "al")
+print(a + b) # atal
+print(a, b) # at al
+a, b = b, a
+print(a + b) # alat
+    \end{python}
+  \end{block}
+
 % taunt Java
 % définition, accès, swap de variables...
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Les listes comme on les connaît}
+
+  \begin{block}{Création et accès}
+    \begin{python}
+maliste = [1, 2, "toto", 5.0]
+print(maliste[0]) # 1
+print(maliste[len(maliste) - 1]) # 5.0
+print(maliste[-1]) # 5.0
+    \end{python}
+  \end{block}
+
+  \begin{block}{Un parcours en for}
+    \begin{python}
+# bien
+for item in maliste:
+  print(item)
+
+# pas bien
+for i in range(len(maliste)):
+  print(maliste[i])
+    \end{python}
+  \end{block}
+
 % définition, parcourt, fonctions principales
 \end{frame}
 
-\begin{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Les slices}
+  \begin{block}{Of slice and men}
+    \begin{python}
+maliste = [1, "deux", 3.3]
+
+print(maliste[0:2]) # [1, "deux"]
+print(maliste[0:-1]) # [1, "deux"]
+print(maliste[:2]) # [1, "deux"]
+
+print(maliste[1:]) # ["deux", 3.3]
+
+a, b = maliste[0:2]
+print(a, b) # 1 deux
+    \end{python}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{List comprehension}
+
+  \begin{block}{Un Python intelligent}
+    \begin{python}
+l1 = [1, 2, 3]
+l2 = [4, 5, 6]
+
+print(zip(l1, l2)) # [(1, 4), (2, 5), (3, 6)]
+
+maliste = [a + b for a, b in zip(l1, l2)]
+print(maliste) # [5, 7, 9]
+    \end{python}
+  \end{block}
+
+  \begin{block}{Un outil puissant}
+    \small
+    \begin{python}
+maliste = [1, 2, 3, 4, 5]
+
+even = [number for number in maliste
+               if number % 2 == 0]
+print(even) # [2, 4]
+    \end{python}
+    
+  \end{block}
 % exemple simple avec zip (en lien avec les tuples)
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{List comprehension avancée}
-% nested lists, fontion sur les éléments
+
+  \begin{block}{Nested Lists}
+    \begin{python}
+maliste = [1, 2, 3, 4]
+[x+1 for x in [y+1 for y in maliste]] 
+# [3, 4, 5, 6]
+    \end{python}
+  \end{block}
+
+  \begin{block}{Avec des fonctions}
+    \begin{python}
+maliste = [1, 2, 3, 4]
+[plus_un(x) for x in maliste] # [2, 3, 4, 5]
+    \end{python}
+  \end{block}
+
+% nested lists, fonction sur les éléments
 \end{frame}
 
-\section{Une approche fonctionnelle}
-\label{sec:functionnal}
+\begin{frame}[fragile]
+  \frametitle{Programmer avec class}
 
-\begin{frame}
-  \frametitle{Les maps, reduce, filter}
-% fonctions avec exemple
+  \begin{block}{Définition d'une classe}
+    \begin{python}
+class MaClasse():
+  attribut = 5
+
+  def plusGrand(self, val):
+    return self.attribut > val
+
+instance = MaClasse()
+print(instance.attribut) # 5
+print(instance.plusGrand(7)) # False
+    \end{python}
+  \end{block}
+% class, héritage méthodes
 \end{frame}
 
-\begin{frame}
-  \frametitle{Les lambda expressions}
-% exemple
-\end{frame}
 
-\section{Exceptions \& co}
-\label{sec:except}
+\begin{frame}[fragile]
+  \frametitle{Héritage}
 
-\begin{frame}
-  \frametitle{Les exceptions}
-% Better ask for forgiveness than for permission
-% exemple
-\end{frame}
+  \begin{block}{Hériter de object}
+    \begin{python}
+class BaseClass(object):
+  def __init__(self, attval):
+    self.attribut = attval
+inst = BaseClass(5)
+print(inst.attribut) # 5
+    \end{python}
 
-\begin{frame}
-  \frametitle{Breaks \& Continues}
-% exemple
+  \end{block}
+
+  \begin{block}{Un riche héritage}
+  \begin{python}
+class MultiClass(BaseClass, AutreClasse):
+  attr = 5
+  \end{python}
+    
+  \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{We're all consenting adults}
+
+  \begin{block}{Pivate, Package, Public, Protected, DontTouchIt, ...}
+    \begin{itemize}
+    \item On estime que les développeurs sont en droit d'accéder aux
+      variables
+    \item On peut simuler une restriction via des décorateurs
+    \item On utilise une convention de nommage (\_mavar)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Une histoire amusante}
+  Un groupe de pirates menace de mettre à disposition plus de 5.000
+  projets open-source java, en mettant tous les attributs et méthodes
+  en public !
+
+  \url{http://steve-yegge.blogspot.fr/2010/07/wikileaks-to-leak-5000-open-source-java.html}
+  \end{block}
 % méthodes / attributs privés
 % taunt Java with Wikileaks
 % http://steve-yegge.blogspot.fr/2010/07/wikileaks-to-leak-5000-open-source-java.html
 
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Les maps, filter, ... reduce ?}
+
+  \begin{block}{Des fonctions standard}
+    \begin{itemize}
+    \item Python propose les deux fonctions de base
+    \item Python a supprimé reduce() dans sa version 3
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Plutôt inutiles...}
+    \begin{python}
+l = [1, 2, 3]
+
+map(str, l) # ['1', '2', '3']
+[str(x) for x in l] # ['1', '2', '3']
+
+filter(l, greaterThan2) # [2, 3]
+[x for x in l if x >= 2] # [2, 3]
+    \end{python}
+  \end{block}
+% fonctions avec exemple
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Les lambda expressions}
+  \begin{block}{Définition locale d'une fonction}
+    \begin{python}
+l = [1, 2, 3]
+
+map(lambda x: x+1, l) # [2, 3, 4]
+    \end{python}
+  \end{block}
+
+  \begin{block}{Utile pour}
+    \begin{itemize}
+    \item Les map et les filter
+    \item Les fonctions prenant une fonction en paramètre (sort)
+    \end{itemize}
+  \end{block}
+
+% exemple
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Les exceptions}
+
+  \begin{block}{Better ask for forgiveness than for permission}
+    \begin{python}
+x = None
+try:
+  x = 5 / 0
+except:
+  x = 5
+    \end{python}
+  \end{block}
+
+  \begin{block}{La lecture de fichiers}
+    \begin{python}
+filename = "./fichier.txt"
+with open(filename, 'r') as monfichier:
+  for line in monfichier.readlines():
+    print(line)
+    \end{python}
+  \end{block}
+
+% Better ask for forgiveness than for permission
+% exemple
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Breaks \& Continues}
+
+  \begin{block}{Pour arrêter les boucles}
+    \begin{python}
+for i in range(5):
+  res = i
+  if i == 3:
+    break
+print(res) # 3
+    \end{python}
+  \end{block}
+
+  \begin{block}{Pour passer son tour}
+    \begin{python}
+for i in range(4):
+  if i == 0:
+    continue
+  print(5/i)
+    \end{python}
+  \end{block}
+
+% exemple
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{On s'amuse avec les fonctions}
+
+  \begin{block}{Des listes et des fonctions}
+    \begin{python}
+def plusun(x):
+  return x+1
+
+def plusdeux(x):
+  return x+2
+
+fun = [plusun, plusdeux]
+val = [1, 2, 3]
+[[f(x) for x in val] for f in fun]
+# [[2, 3, 4], [3, 4, 5]]
+    \end{python}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Et encore quelques autres choses}
+
+  \begin{block}{Le reste, en bonus}
+    \begin{itemize}
+    \item Les décorateurs
+    \item Les générateurs, itérateurs, yield statement
+    \item Les ensembles (sets) et leurs opérateurs
+    \item Les indispensables codecs/io, os, sys, re
+    \item None, is, == et les Booléens
+    \item itertools, datetime, copy, print, pickle
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Environnement et Bonnes Pratiques}
+\label{sec:environment}
+% emacs, virtualenv, pip, doctests
+
+\begin{frame}
+  \frametitle{Emacs FTW !}
+
+  \begin{block}{Une configuration simplifiée}
+    emacs-for-python\footnote{\tiny\url{https://github.com/gabrielelanaro/emacs-for-python}}
+    \begin{itemize}
+    \item Autocomplétion (pas parfaite)
+    \item Coloration
+    \item Interpréteur inclus
+    \item Vérification syntaxique
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Améliorable}
+    \begin{itemize}
+    \item Documentation incluse et meilleure autocomplétion avec Jedi
+    \item Lancer les tests dans emacs
+    \item Coloration probablement à customizer
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ou un autre IDE...}
+
+  \begin{block}{Une pléthore de choix}
+    \begin{itemize}
+    \item Eclipse (plugin Python)
+    \item NINJA-IDE Is Not Just Another IDE (Python)
+    \item Sublime Text (plugins en Python)
+    \item Geany, ideas, ...
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{PyPI et pip}
+  \begin{block}{One place to find them}
+    \begin{itemize}
+    \item Un repo central à la Maven
+    \item Utilisable par TOUS (même vous)
+    \item 72.000.000 de lignes de Python
+    \item 33.000 packages
+    \end{itemize}
+    \centering
+    \url{https://pypi.python.org/pypi}
+  \end{block}
+
+  \begin{block}{One command to bring them all}
+    (sudo) pip install nomdupackage
+
+    \begin{python}
+import nomdupackage # fonctionne directement !
+    \end{python}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{virtualenv, pour gérer les versions}
+
+  \begin{block}{Le monde à un problème...}
+    \begin{itemize}
+    \item Gestion de plusieurs projets à la fois
+    \item Versions de packages/Python différentes
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Une solution : virtualenv}
+    \begin{itemize}
+    \item Environnement de travail indépendant
+    \item Gestion des versions
+    \item Environnement "sain" (pas de packages inutiles)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{virtualenvwrapper}
+
+  \begin{block}{virtualenv, un peu répétitif}
+    \begin{itemize}
+    \item Les environnements peuvent être dispersés sur la machine
+    \item Beaucoup de tâches non automatisées
+    \item Un peu verbeux
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{virtualenvwrapper : encore plus simple !}
+    \begin{itemize}
+    \item Organise tous les environnements dans un seul endroit
+    \item Facilite la gestion des environnements (switch, création, ...)
+    \item Extensible
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{virtualenvwrapper}
+
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{BSOD}
+    \caption{DEMO !}
+    \label{fig:virtualenvwrapperdemo}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Documentation 101}
+
+  \begin{block}{Le monde à un problème...}
+    \begin{itemize}
+    \item Processus de test souvent détaché du code
+    \item Test-driven code souvent illusoire
+    \item Un univers à part (syntaxe différente, méchanismes
+      distincts...)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{doctests : la solution simple}
+    \begin{itemize}
+    \item Inclure les tests à la documentation
+    \item Permettre de mélanger tests et code
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Doctest FTW !}
+
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{sysfail}
+    \caption{DEMO !}
+    \label{fig:doctestdemo}
+  \end{figure}
+\end{frame}
+
+
+\section{Logging, Visualisation et Dév Web}
+\label{sec:libraries}
+
+% matplotlib, logging, django
+% http://docs.python.org/3.3/howto/logging
+
+\section{Conclusion et Pointeurs}
+\label{sec:conclusion}
+
+% beardneck, SO, Sphinx, pyvideos
 
 
 
