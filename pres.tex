@@ -877,7 +877,7 @@ import nomdupackage # fonctionne directement !
 
   \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\textwidth]{BSOD}
+    \includegraphics[width=0.7\textwidth]{rubiks_cat}
     \caption{DEMO !}
     \label{fig:virtualenvwrapperdemo}
   \end{figure}
@@ -921,11 +921,153 @@ import nomdupackage # fonctionne directement !
 \section{Logging, Visualisation et Dév Web}
 \label{sec:libraries}
 
+\begin{frame}
+  \frametitle{Le log}
+
+  \begin{block}{Le monde a un problème...}
+    \begin{itemize}
+    \item Besoin de suivre l'exécution de ses algorithmes
+    \item Différents besoins d'information (debug, suivi, erreurs,
+      ...)
+    \item Print, l'erreur du débutant
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{logging, la solution}
+    \begin{itemize}
+    \item Un module standard
+    \item Facile à utiliser
+    \item Très bien documenté\footnote{\url{http://docs.python.org/3.3/howto/logging}}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Démo time !}
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{catfail}
+    \caption{Démo Logging}
+    \label{fig:loggingdemo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Visualisation de données}
+
+  \begin{block}{Un besoin}
+    \begin{itemize}
+    \item Faire des schémas, courbes facilement
+    \item Utiliser directement des données d'un algo python
+    \item Diversité des besoins (ML, stats, patatoïdes, ...)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Une solution}
+    Matplotlib, un module pour faire tout ça.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Démo colorée !}
+
+  \begin{figure}[!h*]
+    \centering
+    \includegraphics[width=0.7\textwidth]{flyingcat}
+    \caption{Démo matplotlib}
+    \label{fig:matplotlibdemo}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Django, pour le web}
+
+  \begin{block}{Un framework simple}
+    \begin{itemize}
+    \item Tuto
+      efficace\footnote{\url{https://docs.djangoproject.com/en/dev/intro/tutorial01/}}
+    \item ORM, sqlite, ...
+    \item Tuto efficace\footnote{\url{http://www.creativebloq.com/netmag/get-started-django-7132932}}
+    \item Séparation des scripts (bdd, interface, routes, ...)
+    \item Tutos efficaces\footnote{\url{https://code.djangoproject.com/wiki/Tutorials}}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 % matplotlib, logging, django
 % http://docs.python.org/3.3/howto/logging
 
 \section{Conclusion et Pointeurs}
 \label{sec:conclusion}
+
+\begin{frame}
+  \frametitle{En résumé}
+
+  \begin{block}{Python, un langage...}
+    \begin{itemize}
+    \item Idéal pour la plupart des tâches
+    \item Avec un nombre de modules impressionnant
+    \item Avec une syntaxe agréable
+    \item Qui laisse un peu plus de champ libre aux développeurs
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Mais...}
+    \begin{itemize}
+    \item Qui laisse un peu plus de champ libre aux développeurs
+    \item Qui n'est pas encore totalement passé dans sa v3
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Les ressources}
+
+  \begin{block}{Si j'ai une question...}
+    \begin{itemize}
+    \item La documentation
+      Python\footnote{\url{http://docs.python.org/3/}}
+    \item SO pour les questions techniques (pas trop pour le style)
+    \item IRC (freenode)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Envie de voir du beau code et d'apprendre}
+    \begin{itemize}
+    \item Idiomes sympas\footnote{http://sahandsaba.com/thirty-python-language-features-and-tricks -you-may-not-know.html}
+    \item Tuto interactif\footnote{\url{https://pythonmonk.com/}}
+    \item CodeAcademy ?
+   \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Les ressources 2}
+
+  \begin{block}{Des vidéos}
+    \begin{itemize}
+    \item
+      NeckBeard\footnote{\url{https://www.neckbeardrepublic.com/screencasts/}}
+      : excellents screencast (Sphinx, PyPI, Django, Profiling,
+      itérables, ...)
+    \item Les conférences
+      Python\footnote{\url{http://pyvideo.org/}}. Parfois techniques...
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The End !}
+
+  \begin{figure}[!h*]
+    \centering
+    \includegraphics[width=0.7\textwidth]{byecat}
+    \caption{Fini !}
+    \label{fig:end}
+  \end{figure}
+\end{frame}
 
 % beardneck, SO, Sphinx, pyvideos
 
