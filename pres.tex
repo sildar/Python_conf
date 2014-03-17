@@ -31,6 +31,10 @@
   \addtocounter{framenumber}{-1}
 }
 
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{} % removes the headline that infolines inserts
+
+
 % Custom colors
 \usepackage{color}
 
@@ -142,7 +146,7 @@ emphstyle={\color{self}\slshape},
       Premier Prix Turing.
     \end{itemize}
   \end{block}
-
+  \pause
   \begin{block}{Son origine}
     \begin{itemize}
     \item Nommé après les Monty Python
@@ -242,12 +246,16 @@ emphstyle={\color{self}\slshape},
     \end{itemize}
   \end{block}
 
+  \pause
+
   \begin{block}{Un langage pour spécialistes}
     \begin{itemize}
     \item NLTK
     \item NumPy
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Adossé au C}
     \begin{itemize}
@@ -270,12 +278,15 @@ emphstyle={\color{self}\slshape},
     \end{itemize}
   \end{block}
 
+  \pause
+
   \begin{block}{Python 3 est le futur}
     \begin{itemize}
     \item Python 3 résoud beaucoup de problèmes sémantiques / stylistiques.
     \item La plupart des modules prévoient un portage Python 3.
     \item Le développement de Python 2 est arrêté (Python 2.7 est la
       dernière version).
+    \item Python 3.4 sorti hier ! (Enum, statistics, asyncio)
     \end{itemize}
   \end{block}
 % Python 2 vs Python 3
@@ -325,6 +336,8 @@ emphstyle={\color{self}\slshape},
 
     \end{block}
 
+    \pause
+
     \begin{block}{VS Java...}
     \begin{lstlisting}[language=Java]
   public class HelloWorld {
@@ -342,10 +355,13 @@ emphstyle={\color{self}\slshape},
 
   \begin{block}{Python}
     \begin{python}
-  def main():
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def main():
     print("Hello World")
 
-  if __name__ == "__main__":
+if __name__ == "__main__":
     main()
     \end{python}
 
@@ -387,6 +403,7 @@ void* foo(std::vector<int>* first,
     \end{python}
   \end{block}
 
+  \pause
 
   \begin{block}{En python}
 
@@ -415,6 +432,8 @@ else:
     \end{python}
   \end{block}
 
+\pause
+
   \begin{block}{While, la boucle la plus rare}
     \begin{python}
 i = 0
@@ -438,6 +457,7 @@ for i in range(5):
     \end{python}
   \end{block}
 
+  \pause
 
   \begin{block}{Itérer avec un for}
     \begin{python}
@@ -463,6 +483,8 @@ print(triplet[0] + triplet[1] + triplet[2])
 # ascii
     \end{python}
   \end{block}
+
+\pause
 
   \begin{block}{Swap, unpacking}
     \begin{python}
@@ -490,15 +512,18 @@ print(maliste[-1]) # 5.0
     \end{python}
   \end{block}
 
+  \pause
+
   \begin{block}{Un parcours en for}
     \begin{python}
 # bien
 for item in maliste:
   print(item)
 
-# pas bien
-for i in range(len(maliste)):
-  print(maliste[i])
+# ou alors
+for i, item in enumerate(maliste):
+  print(item)
+  maliste.pop(i)
     \end{python}
   \end{block}
 
@@ -539,6 +564,8 @@ print(maliste) # [5, 7, 9]
     \end{python}
   \end{block}
 
+  \pause
+
   \begin{block}{Un outil puissant}
     \small
     \begin{python}
@@ -563,6 +590,8 @@ maliste = [1, 2, 3, 4]
 # [3, 4, 5, 6]
     \end{python}
   \end{block}
+
+  \pause
 
   \begin{block}{Avec des fonctions}
     \begin{python}
@@ -608,6 +637,8 @@ print(inst.attribut) # 5
 
   \end{block}
 
+  \pause
+
   \begin{block}{Un riche héritage}
   \begin{python}
 class MultiClass(BaseClass, AutreClasse):
@@ -628,6 +659,8 @@ class MultiClass(BaseClass, AutreClasse):
     \item On utilise une convention de nommage (\_mavar)
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Une histoire amusante}
   Un groupe de pirates menace de mettre à disposition plus de 5.000
@@ -651,6 +684,8 @@ class MultiClass(BaseClass, AutreClasse):
     \item Python a supprimé reduce() dans sa version 3
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Plutôt inutiles...}
     \begin{python}
@@ -676,6 +711,8 @@ map(lambda x: x+1, l) # [2, 3, 4]
     \end{python}
   \end{block}
 
+  \pause
+
   \begin{block}{Utile pour}
     \begin{itemize}
     \item Les map et les filter
@@ -698,6 +735,8 @@ except:
   x = 5
     \end{python}
   \end{block}
+
+  \pause
 
   \begin{block}{La lecture de fichiers}
     \begin{python}
@@ -724,6 +763,8 @@ for i in range(5):
 print(res) # 3
     \end{python}
   \end{block}
+
+  \pause
 
   \begin{block}{Pour passer son tour}
     \begin{python}
@@ -788,6 +829,8 @@ val = [1, 2, 3]
     \end{itemize}
   \end{block}
 
+  \pause
+
   \begin{block}{Améliorable}
     \begin{itemize}
     \item Documentation incluse et meilleure autocomplétion avec Jedi
@@ -823,6 +866,8 @@ val = [1, 2, 3]
     \url{https://pypi.python.org/pypi}
   \end{block}
 
+  \pause
+
   \begin{block}{One command to bring them all}
     (sudo) pip install nomdupackage
 
@@ -841,6 +886,8 @@ import nomdupackage # fonctionne directement !
     \item Versions de packages/Python différentes
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Une solution : virtualenv}
     \begin{itemize}
@@ -861,6 +908,8 @@ import nomdupackage # fonctionne directement !
     \item Un peu verbeux
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{virtualenvwrapper : encore plus simple !}
     \begin{itemize}
@@ -895,6 +944,8 @@ import nomdupackage # fonctionne directement !
       distincts...)
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{doctests : la solution simple}
     \begin{itemize}
@@ -933,6 +984,8 @@ import nomdupackage # fonctionne directement !
     \end{itemize}
   \end{block}
 
+  \pause
+
   \begin{block}{logging, la solution}
     \begin{itemize}
     \item Un module standard
@@ -962,6 +1015,8 @@ import nomdupackage # fonctionne directement !
     \item Diversité des besoins (ML, stats, patatoïdes, ...)
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Une solution}
     Matplotlib, un module pour faire tout ça.
@@ -1012,6 +1067,8 @@ import nomdupackage # fonctionne directement !
     \end{itemize}
   \end{block}
 
+  \pause
+
   \begin{block}{Mais...}
     \begin{itemize}
     \item Qui laisse un peu plus de champ libre aux développeurs
@@ -1032,6 +1089,8 @@ import nomdupackage # fonctionne directement !
     \item IRC (freenode)
     \end{itemize}
   \end{block}
+
+  \pause
 
   \begin{block}{Envie de voir du beau code et d'apprendre}
     \begin{itemize}
